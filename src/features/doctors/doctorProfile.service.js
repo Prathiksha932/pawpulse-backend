@@ -49,6 +49,8 @@ export const approveDoctor = async (doctorUserId) => {
     throw new ApiError(404, 'Doctor profile not found');
   }
 
+  await User.findByIdAndUpdate(doctorUserId, { accountStatus: 'active' });
+
   return profile;
 };
 
